@@ -48,9 +48,9 @@ export default function Login() {
           <img src={Logo} alt="" />
         </Link>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ isInitialValid: false, email: "", password: "" }}
         >
-          {({errors, touched}) => (
+          {({errors, touched, isValid, dirty}) => (
             <Form
               className='login__form'
               name="login"
@@ -69,7 +69,7 @@ export default function Login() {
               <Field id='password' name="password" type="password" validate={validatePassword} />
               {errors.password && touched.password && <div>{errors.password}</div>}
 
-              <button className='coupon__signin' type="submit">Continue</button>
+              <button className='coupon__signin' type="submit" disabled={!(isValid && dirty)}>Continue</button>
 
               <div className="policy">
                 By continuing, you agree to Amazon's&nbsp;
