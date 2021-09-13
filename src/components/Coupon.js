@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 import Gift from '../images/amazon_coupon.png';
 
 export default function Coupon() {
-  const initialValue = !isNaN(localStorage.getItem('couponRemains')) ? localStorage.getItem('couponRemains') : 2736
+  const initialValue = (localStorage.getItem('couponRemains')) !== null ? localStorage.getItem('couponRemains') : 2736;
   const [couponValue, setCouponValue] = useState(initialValue)
   
   useEffect(() => {
     const couponInterval = setInterval(() => {
       clearTimeout(couponInterval)
-      setCouponValue(c => c-(Math.floor(Math.random()*4 + 1)))
+      if(couponValue <= 10) {
+        setCouponValue(2736)
+      } else {
+        setCouponValue(c => c-(Math.floor(Math.random()*4 + 1)))
+      }
     }, 10000 * Math.random() + 1000);
-  }, [couponValue])
-
-  useEffect(() => {
     localStorage.setItem('couponRemains', couponValue)
   }, [couponValue])
 

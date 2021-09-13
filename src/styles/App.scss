@@ -271,3 +271,13 @@ main {
     width: 0;
   }
 }
+
+@media(max-width: 425px) {
+  .giveaway-info {  
+    h1 {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      padding: 1rem;
+    }
+  }
+}
