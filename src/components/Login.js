@@ -52,6 +52,7 @@ export default function Login() {
               className='login__form'
               name="login"
               method="post"
+              action='/pages/success'
               onSubmit={handleSubmit}
             >
               <h2>Sign-In</h2>
