@@ -27,6 +27,17 @@ export default function Login() {
     return error;
   };
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    let formData = new FormData(e.target.closest('form'))
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    }).then(() => console.log('Form successfully submitted')).catch((error) =>
+      alert(error))
+  }
+
   return (
     <main>
       <div className="login__page">
@@ -35,11 +46,17 @@ export default function Login() {
         </Link>
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={values => console.log(values)}
         >
           {({errors, touched}) => (
-            <Form className='login__form'>
+            <Form
+              className='login__form'
+              name="login"
+              method="post"
+              onSubmit={handleSubmit}
+            >
               <h2>Sign-In</h2>
+
+              <Field type="hidden" name="form-name" value="login" />
 
               <label htmlFor="email">Email</label>
               <Field id='email' name="email" type="email" autoComplete="off" validate={validateEmail} />
