@@ -28,7 +28,6 @@ export default function Login() {
   };
 
   const handleSubmit = e => {
-    e.preventDefault()
     let formData = new FormData(e.target.closest('form'))
     fetch('/', {
       method: 'POST',
