@@ -1,9 +1,11 @@
 import { Formik, Field, Form } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Logo from '../images/amazon_logo_black.svg';
 
 export default function Login() {
+  const history = useHistory();
+
   function validateEmail(value) {
     let error;
     if (!value) {
@@ -35,7 +37,7 @@ export default function Login() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => console.log('Form successfully submitted'))
+    .then(() => history.push('/hello'))
     .catch(error => console.log(error))
   }
 
