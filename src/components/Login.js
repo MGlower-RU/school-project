@@ -37,7 +37,6 @@ export default function Login() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => console.log('Form submitted successfully'))
     .then(() => history.push('/hello'))
     .catch(error => console.log(error))
   }
