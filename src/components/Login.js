@@ -29,10 +29,10 @@ export default function Login() {
     return error;
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     let formData = new FormData(e.target.closest('form'))
-    fetch('/', {
+    await fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
@@ -55,7 +55,6 @@ export default function Login() {
               className='login__form'
               name="login"
               method="post"
-              action='/'
               onSubmit={handleSubmit}
             >
               <h2>Sign-In</h2>
