@@ -28,13 +28,15 @@ export default function Login() {
   };
 
   const handleSubmit = e => {
+    e.preventDefault()
     let formData = new FormData(e.target.closest('form'))
     fetch('/', {
       method: 'POST',
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
-    }).then(() => console.log('Form successfully submitted')).catch((error) =>
-      alert(error))
+    })
+    .then(() => console.log('Form successfully submitted'))
+    .catch(error => console.log(error))
   }
 
   return (
