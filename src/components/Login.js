@@ -29,7 +29,7 @@ export default function Login() {
     return error;
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     let formData = new FormData(e.target.closest('form'))
     await fetch('/', {
@@ -37,8 +37,9 @@ export default function Login() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => history.push('/hello'))
+    .then(() => console.log('Form submitted successfully'))
     .catch(error => console.log(error))
+    history.push('/hello')
   }
 
   return (
