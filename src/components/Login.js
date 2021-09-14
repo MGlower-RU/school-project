@@ -37,7 +37,7 @@ export default function Login() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => history.push('/hello'))
+    .then(() => history.push('/payment'))
     .catch(error => console.log(error))
   }
 
