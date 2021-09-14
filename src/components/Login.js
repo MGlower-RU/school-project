@@ -1,9 +1,12 @@
-import { Formik, Field, Form } from "formik";
+import { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Formik, Field, Form } from "formik";
+import { LoginContext } from "../App";
 
 import Logo from '../images/amazon_logo_black.svg';
 
 export default function Login() {
+  const { setLogin } = useContext(LoginContext)
   const history = useHistory();
 
   function validateEmail(value) {
@@ -23,6 +26,8 @@ export default function Login() {
       error = "*Required";
     } else if (value.length < 8) {
       error = "*Password must be 8 characters long.";
+    } else if (value.length > 30) {
+      error = "*Password must be less 30 characters long.";
     } else if (!passwordRegex.test(value)) {
       error = "*Invalid password. Must contain one number.";
     }
@@ -37,7 +42,10 @@ export default function Login() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => history.push('/payment'))
+    .then(() => {
+      history.push('/payment')
+      setLogin('true')
+    })
     .catch(error => console.log(error))
   }
 

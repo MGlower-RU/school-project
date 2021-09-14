@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Gift from '../images/amazon_coupon.png';
+import { LoginContext } from '../App';
 import { CouponContext } from './CouponContextComponent';
 
 export default function Coupon() {
   const { setPrice } = useContext(CouponContext)
+  const { isLogged } = useContext(LoginContext);
 
-  const initialValue = (localStorage.getItem('couponRemains')) !== null ? localStorage.getItem('couponRemains') : 2736;
-  const [couponValue, setCouponValue] = useState(initialValue)
   const couponsArray = [
     {
       id: 142,
@@ -31,24 +31,10 @@ export default function Coupon() {
       newPrice: 25
     },
   ]
-  
-  useEffect(() => {
-    const couponInterval = setInterval(() => {
-      clearTimeout(couponInterval)
-      if(couponValue <= 10) {
-        setCouponValue(2736)
-      } else {
-        setCouponValue(c => c-(Math.floor(Math.random()*4 + 1)))
-      }
-    }, 10000 * Math.random() + 1000);
-    localStorage.setItem('couponRemains', couponValue)
-  }, [couponValue])
 
   return (
     <main>
-      <div className="giveaway-info">
-        <h1>Only {couponValue} FREE coupons left</h1>
-      </div>
+      <CouponsRemain />
       <div className="coupons">
         {couponsArray.map(el => {
           return (
@@ -69,14 +55,44 @@ export default function Coupon() {
                     Amazon.com Gift Card
                   </div>
                 </div>
-                <Link to='signin' className="coupon__signin" onClick={() => setPrice(el.newPrice)}>
-                  Signin to get coupon
-                </Link>
+                {
+                  isLogged === 'true' ?
+                  <Link to='payment' className="coupon__signin" onClick={() => setPrice(el.newPrice)}>
+                    Get coupon
+                  </Link>
+                  :
+                  <Link to='signin' className="coupon__signin" onClick={() => setPrice(el.newPrice)}>
+                    Signin to get coupon
+                  </Link>
+                }
               </div>
             </div>
           )
         })}
       </div>
     </main>
+  )
+}
+
+function CouponsRemain() {
+  const initialValue = (localStorage.getItem('couponRemains')) !== null ? localStorage.getItem('couponRemains') : 2736;
+  const [couponValue, setCouponValue] = useState(initialValue)
+
+  useEffect(() => {
+    const couponInterval = setInterval(() => {
+      clearTimeout(couponInterval)
+      if(couponValue <= 10) {
+        setCouponValue(2736)
+      } else {
+        setCouponValue(c => c-(Math.floor(Math.random()*4 + 1)))
+      }
+    }, 10000 * Math.random() + 1000);
+    localStorage.setItem('couponRemains', couponValue)
+  }, [couponValue])
+
+  return (
+    <div className="giveaway-info">
+      <h1>Only {couponValue} FREE coupons left</h1>
+    </div>
   )
 }
