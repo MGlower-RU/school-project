@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { useHistory } from "react-router";
 
@@ -7,10 +7,10 @@ import Visa from '../images/visa.svg'
 
 export default function Payment() {
   const history = useHistory()
-  const date = new Date();
-  const convertNumber = num => num >= 10 ? num : `0${num}`
-  const currentDate = `${date.getFullYear()}-${convertNumber(date.getMonth()+1)}`;
-  const [dateValue, setDateValue] = useState(currentDate);
+  // const date = new Date();
+  // const convertNumber = num => num >= 10 ? num : `0${num}`
+  // const currentDate = `${date.getFullYear()}-${convertNumber(date.getMonth()+1)}`;
+  // const [dateValue, setDateValue] = useState(currentDate);
   
   function validateNumber(value) {
     let error = "";
@@ -29,7 +29,7 @@ export default function Payment() {
 
   function cvcValidate(value) {
     let error = "";
-    const passwordRegex = /(?=.*[0-9])/;
+    // const passwordRegex = /(?=.*[0-9])/;
     if (!value) {
       error = "*Required";
     } else if (value.length < 3) {
