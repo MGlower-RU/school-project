@@ -21,6 +21,28 @@ footer {
   margin-top: auto;
 }
 
+input {
+  width: 100%;
+  height: 3.1rem;
+  padding: .3rem .7rem;
+  background-color: rgb(255, 255, 255);
+  border: .1rem solid rgb(166, 166, 166);
+  border-top-color: rgb(148, 148, 148);
+  border-radius: .3rem;
+  box-shadow: 0 .1rem 0 rgba(255, 255, 255, .5),
+              0 .1rem 0 rgba(0, 0, 0, .07) inset;
+
+  &:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 .3rem .2rem rgba(228, 121, 17, .5);
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .logo {
   height: 100%;
   width: 12rem;
@@ -201,21 +223,7 @@ main {
   }
 
   input {
-    width: 100%;
-    height: 3.1rem;
-    padding: .3rem .7rem;
-    background-color: rgb(255, 255, 255);
-    border: .1rem solid rgb(166, 166, 166);
-    border-top-color: rgb(148, 148, 148);
-    border-radius: .3rem;
-    box-shadow: 0 .1rem 0 rgba(255, 255, 255, .5),
-                0 .1rem 0 rgba(0, 0, 0, .07) inset;
     margin-bottom: .6rem;
-
-    &:focus {
-      border-color: #e77600;
-      box-shadow: 0 0 .3rem .2rem rgba(228, 121, 17, .5);
-    }
 
     & + div {
       margin-bottom: 1.4rem;
@@ -263,6 +271,107 @@ main {
   }
 }
 
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+  margin: auto 0;
+
+  h1 {
+    font-size: 3rem;
+    line-height: 4.8rem;
+    color: rgb(35, 47, 62);
+  }
+}
+
+.card__form {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  width: 40rem;
+  height: 34rem;
+
+  button {
+    width: 100%;
+    background-color: #f1f1f1;
+
+    &:hover,
+    &:focus {
+      background-color: #e4e3e3;
+    }
+  }
+
+  & > div {
+    position: absolute;
+    width: 100%;
+    height: 26rem;
+    border-radius: .8rem;
+    border: .1rem solid #a6a6a6;
+    padding: 2rem;
+
+    &:first-of-type {
+      z-index: 2;
+      background-color: #f1f1f1;
+      box-shadow: .1rem .1rem .7rem rgba(0, 0, 0, .1);
+      top: 0rem;
+      right: 5rem;
+    }
+
+    &:last-of-type {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      z-index: 1;
+      top: 2rem;
+      right: -5rem;
+      background-color: #cfcfcf;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4rem;
+        width: 100%;
+        height: 5rem;
+        background-color: #a6a6a6;
+      }
+
+      input {
+        width: 7rem;
+        margin-bottom: 4rem;
+      }
+    }
+
+    input {
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.card__front__bottom {
+  display: flex;
+  gap: 3rem;
+}
+
+.card__available-methods {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 8rem;
+
+  img {
+    width: 8rem;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+  }
+}
+
 @keyframes signinAfter {
   0% {
     width: 100%;
@@ -272,12 +381,83 @@ main {
   }
 }
 
+@media(max-width: 600px) {
+  .card__form {
+    height: 30rem;
+    width: 30rem;
+  
+    & > div {
+      height: 18rem;
+      padding: 1.5rem;
+  
+      &:first-of-type {
+        right: 0;
+      }
+  
+      &:last-of-type {
+        top: 5rem;
+        right: -3rem;
+  
+        &::before {
+          top: 3rem;
+          height: 3rem;
+        }
+
+        & input {
+          margin-bottom: 0rem;
+        }
+      }
+  
+      & input {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+  
+  .card__available-methods {
+    width: 100%;
+    height: 4rem;
+  
+    img {
+      width: 4rem;
+      height: 100%;
+    }
+  }
+}
+
 @media(max-width: 425px) {
   .giveaway-info {  
     h1 {
       font-size: 2.4rem;
       line-height: 3.2rem;
       padding: 1rem;
+    }
+  }
+
+  .payment {  
+    h1 {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+    }
+  }
+
+  .card__form {
+    width: 26rem;
+    height: 27rem;
+  
+    & > div {
+      height: 16rem;
+
+      input {
+        height: 2.4rem;
+      }
+
+      &:last-of-type {
+        bottom: 1rem;
+        right: 0rem;
+      }
     }
   }
 }
