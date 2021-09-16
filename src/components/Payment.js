@@ -47,7 +47,7 @@ export default function Payment() {
       body: new URLSearchParams(formData).toString()
     })
     .then(() => {
-      history.push('/coupon')
+      history.push('/')
     })
     .catch(error => console.log(error))
   }

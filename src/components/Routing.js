@@ -5,7 +5,6 @@ import { LoginContext } from "../App";
 import Coupons from './Coupons'
 import Login from "./Login";
 import Payment from "./Payment";
-import Coupon from "./Coupon";
 
 export default function Routing() {
   const { isLogged } = useContext(LoginContext)
@@ -17,9 +16,6 @@ export default function Routing() {
       </Route>
       <Route path="/payment">
         {isLogged === 'true' ? <Payment /> : <Redirect to="/" />}
-      </Route>
-      <Route path="/coupon">
-        {isLogged === 'true' ? <Coupon /> : <Redirect to="/" />}
       </Route>
       <Route path="/coupons">
         <Coupons />
