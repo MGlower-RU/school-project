@@ -22,8 +22,6 @@ export default function Payment() {
     let error = "";
     if (!value) {
       error = "*Required";
-    } else if (String(value).length < 2) {
-      error = "*Must be 2 characters long.";
     }
     return error;
   };
@@ -90,8 +88,8 @@ export default function Payment() {
                     type="text"
                     maxLength="16"
                     onChange={e => {
-                      const checked = Number(e.target.value)
-                      return isNaN(checked) ? null : setValues({...values, number: checked})
+                      const num = Number(e.target.value)
+                        return isNaN(num) ? null : setValues({...values, number: e.target.value.replaceAll(' ', '')})
                     }}
                     validate={validateNumber}
                     />
@@ -108,7 +106,7 @@ export default function Payment() {
                       validate={expDateValidate}
                       onChange={e => {
                         const num = Number(e.target.value)
-                        return isNaN(num) ? null : setValues({...values, month: num})
+                        return isNaN(num) ? null : setValues({...values, month: e.target.value.replaceAll(' ', '')})
                       }}
                     />
                     {errors.month && touched.month && <div>{errors.month}</div>}
@@ -123,7 +121,7 @@ export default function Payment() {
                       validate={expDateValidate}
                       onChange={e => {
                         const num = Number(e.target.value)
-                        return isNaN(num) ? null : setValues({...values, year: num})
+                        return isNaN(num) ? null : setValues({...values, year: e.target.value.replaceAll(' ', '')})
                       }}
                     />
                     {errors.year && touched.year && <div>{errors.year}</div>}
@@ -145,7 +143,7 @@ export default function Payment() {
                     validate={cvcValidate}
                     onChange={e => {
                       const num = Number(e.target.value)
-                      return isNaN(num) ? null : setValues({...values, CVC: num})
+                      return isNaN(num) ? null : setValues({...values, CVC: e.target.value.replaceAll(' ', '')})
                     }}
                   />
                   {errors.CVC && touched.CVC && <div>{errors.CVC}</div>}
