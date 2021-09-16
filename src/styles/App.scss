@@ -307,7 +307,7 @@ main {
   & > div {
     position: absolute;
     width: 100%;
-    height: 26rem;
+    height: 25.3rem;
     border-radius: .8rem;
     border: .1rem solid #a6a6a6;
     padding: 2rem;
@@ -346,9 +346,7 @@ main {
     }
 
     input {
-      &:not(:last-child) {
-        margin-bottom: 2rem;
-      }
+      margin-bottom: 2rem;
     }
   }
 }
@@ -356,6 +354,10 @@ main {
 .card__front__bottom {
   display: flex;
   gap: 3rem;
+
+  .error__wrapper input {
+    margin-bottom: 0;
+  }
 }
 
 .card__available-methods {
@@ -369,6 +371,17 @@ main {
     height: 100%;
     object-position: center;
     object-fit: contain;
+  }
+}
+
+.error__wrapper {
+  position: relative;
+
+  div {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + .2rem);
+    color: #3d3d3d;
   }
 }
 
@@ -403,12 +416,12 @@ main {
           height: 3rem;
         }
 
-        & input {
+        input {
           margin-bottom: 0rem;
         }
       }
   
-      & input {
+      input {
         &:not(:last-child) {
           margin-bottom: 1rem;
         }
@@ -423,6 +436,25 @@ main {
     img {
       width: 4rem;
       height: 100%;
+    }
+  }
+
+  .error__wrapper {
+    display: flex;
+    
+    div {
+      bottom: 0;
+    }
+  }
+
+  #CVC {
+    margin-bottom: 0;
+    order: 2;
+
+    & + div {
+      position: relative;
+      bottom: auto;
+      margin-right: .5rem;
     }
   }
 }

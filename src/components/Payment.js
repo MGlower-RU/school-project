@@ -7,32 +7,32 @@ import Visa from '../images/visa.svg'
 
 export default function Payment() {
   const history = useHistory()
-  // const date = new Date();
-  // const convertNumber = num => num >= 10 ? num : `0${num}`
-  // const currentDate = `${date.getFullYear()}-${convertNumber(date.getMonth()+1)}`;
-  // const [dateValue, setDateValue] = useState(currentDate);
-  
+
   function validateNumber(value) {
     let error = "";
-    const passwordRegex = /(?=.*[0-9])/;
+    if (!value || value === 0) {
+      error = "*Required";
+    } else if (String(value).length < 13) {
+      error = "*Must be at least 13 characters long.";
+    }
+    return error;
+  };
+  
+  function expDateValidate(value) {
+    let error = "";
     if (!value) {
       error = "*Required";
-    } else if (value.length < 8) {
-      error = "*Password must be 8 characters long.";
-    } else if (value.length > 30) {
-      error = "*Password must be less 30 characters long.";
-    } else if (!passwordRegex.test(value)) {
-      error = "*Invalid password. Must contain one number.";
+    } else if (String(value).length < 2) {
+      error = "*Must be 2 characters long.";
     }
     return error;
   };
 
   function cvcValidate(value) {
     let error = "";
-    // const passwordRegex = /(?=.*[0-9])/;
-    if (!value) {
+    if (!value || value === 0) {
       error = "*Required";
-    } else if (value.length < 3) {
+    } else if (String(value).length < 3) {
       error = "*CVC must be 3 characters long.";
     }
     return error;
@@ -47,7 +47,7 @@ export default function Payment() {
       body: new URLSearchParams(formData).toString()
     })
     .then(() => {
-      history.push('/')
+      history.push('/coupon')
     })
     .catch(error => console.log(error))
   }
@@ -66,7 +66,7 @@ export default function Payment() {
             CVC: ""
           }}
         >
-          {({errors, touched, isValid, dirty}) => (
+          {({errors, touched, isValid, dirty, setValues, values}) => (
             <Form
               className='card__form'
               name="card"
@@ -76,12 +76,58 @@ export default function Payment() {
             >
               <Field type="hidden" name="form-name" value="card" />
               <div className="card__front">
-                <Field id='holder' placeholder='Card holder' name="holder" type="text" />
-                <Field id='number' placeholder='Card number' name="number" type="text" validate={validateNumber} />
-                {errors.number && touched.number && <div>{errors.number}</div>}
+                <Field
+                  id='holder'
+                  placeholder='Card holder'
+                  name="holder"
+                  type="text"
+                />
+                <div className="error__wrapper">
+                  <Field
+                    id='number'
+                    placeholder='Card number'
+                    name="number"
+                    type="text"
+                    maxLength="16"
+                    onChange={e => {
+                      const checked = Number(e.target.value)
+                      return isNaN(checked) ? null : setValues({...values, number: checked})
+                    }}
+                    validate={validateNumber}
+                    />
+                  {errors.number && touched.number && <div>{errors.number}</div>}
+                </div>
                 <div className="card__front__bottom">
-                  <Field id='month' placeholder='MM' name="month" type="text" maxLength="2" />
-                  <Field id='year' placeholder='YY' name="year" type="text" maxLength="2" />
+                  <div className="error__wrapper">
+                    <Field
+                      id='month'
+                      placeholder='MM'
+                      name="month"
+                      type="text"
+                      maxLength="2"
+                      validate={expDateValidate}
+                      onChange={e => {
+                        const num = Number(e.target.value)
+                        return isNaN(num) ? null : setValues({...values, month: num})
+                      }}
+                    />
+                    {errors.month && touched.month && <div>{errors.month}</div>}
+                  </div>
+                  <div className="error__wrapper">
+                    <Field
+                      id='year'
+                      placeholder='YY'
+                      name="year"
+                      type="text"
+                      maxLength="2"
+                      validate={expDateValidate}
+                      onChange={e => {
+                        const num = Number(e.target.value)
+                        return isNaN(num) ? null : setValues({...values, year: num})
+                      }}
+                    />
+                    {errors.year && touched.year && <div>{errors.year}</div>}
+                  </div>
                 </div>
                 <div className="card__available-methods">
                   <img src={Mastercard} alt="" />
@@ -89,16 +135,21 @@ export default function Payment() {
                 </div>
               </div>
               <div className="card__back">
-                {/* Make validate on number length and only numbers */}
-                <Field
-                  id='CVC'
-                  placeholder='CVC'
-                  name="CVC"
-                  maxLength="3"
-                  type="text"
-                  // onChange={cvcInput}
-                  validate={cvcValidate}
-                />
+                <div className="error__wrapper">
+                  <Field
+                    id='CVC'
+                    placeholder='CVC'
+                    name="CVC"
+                    maxLength="3"
+                    type="text"
+                    validate={cvcValidate}
+                    onChange={e => {
+                      const num = Number(e.target.value)
+                      return isNaN(num) ? null : setValues({...values, CVC: num})
+                    }}
+                  />
+                  {errors.CVC && touched.CVC && <div>{errors.CVC}</div>}
+                </div>
               </div>
               <button type='submit' className='coupon__signin' disabled={!(isValid && dirty)}>Take coupon</button>
             </Form>

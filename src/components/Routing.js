@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginContext } from "../App";
 
-import Coupon from './Coupon'
+import Coupons from './Coupons'
 import Login from "./Login";
 import Payment from "./Payment";
+import Coupon from "./Coupon";
 
 export default function Routing() {
   const { isLogged } = useContext(LoginContext)
@@ -15,10 +16,16 @@ export default function Routing() {
         {isLogged === 'true' ? <Redirect to="/" /> : <Login />}
       </Route>
       <Route path="/payment">
-        <Payment />
+        {isLogged === 'true' ? <Payment /> : <Redirect to="/" />}
+      </Route>
+      <Route path="/coupon">
+        {isLogged === 'true' ? <Coupon /> : <Redirect to="/" />}
+      </Route>
+      <Route path="/coupons">
+        <Coupons />
       </Route>
       <Route path="/">
-        <Coupon />
+        <Redirect to="/coupons" />
       </Route>
     </Switch>
   )
