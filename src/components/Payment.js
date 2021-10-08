@@ -41,7 +41,6 @@ export default function Payment() {
     let formData = new FormData(e.target.closest('form'))
     fetch('/', {
       method: 'POST',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
     .then(() => {

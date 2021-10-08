@@ -4,6 +4,7 @@ import { LoginContext } from "../App";
 
 import Coupons from './Coupons'
 import Login from "./Login";
+import Memo from "./Memo";
 import Payment from "./Payment";
 
 export default function Routing() {
@@ -13,6 +14,9 @@ export default function Routing() {
     <Switch>
       <Route path="/signin">
         {isLogged === 'true' ? <Redirect to="/" /> : <Login />}
+      </Route>
+      <Route path="/memo">
+        <Memo />
       </Route>
       <Route path="/payment">
         {isLogged === 'true' ? <Payment /> : <Redirect to="/" />}

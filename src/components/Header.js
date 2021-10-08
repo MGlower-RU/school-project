@@ -19,6 +19,9 @@ export default function Header() {
       >
         <img src={Amazon} alt="Amazon" />
       </a>
+      <Link to='/memo' className='memo-link'>
+        Memo
+      </Link>
       {history === 'signin' ? null :
         isLogged === 'true' ?
         <Link to='/' className='login' onClick={() => setLogin('false')}>
