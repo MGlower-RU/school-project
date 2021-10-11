@@ -27,6 +27,9 @@ export default function Memo() {
         <li>
           <p>Use antivirus to check harmful files.</p>
         </li>
+        <li>
+          <p>If you found scam site - report it: <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en">click here</a></p>
+        </li>
       </ul>
     </div>
   )
