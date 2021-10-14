@@ -19,8 +19,8 @@ export default function Header() {
       >
         <img src={Amazon} alt="Amazon" />
       </a>
-      <Link to='/memo' className='memo-link'>
-        Memo
+      <Link to={history === 'memo' ? '/coupons' : '/memo'} className='memo-link'>
+        {history === 'memo' ? 'Home' : 'Memo'}
       </Link>
       {history === 'signin' ? null :
         isLogged === 'true' ?

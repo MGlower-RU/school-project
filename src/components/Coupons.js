@@ -80,7 +80,6 @@ function CouponsRemain() {
 
   useEffect(() => {
     const couponInterval = setInterval(() => {
-      clearTimeout(couponInterval)
       if(couponValue <= 10) {
         setCouponValue(2736)
       } else {
@@ -88,6 +87,8 @@ function CouponsRemain() {
       }
     }, 10000 * Math.random() + 1000);
     localStorage.setItem('couponRemains', couponValue)
+
+    return () => clearInterval(couponInterval)
   }, [couponValue])
 
   return (
