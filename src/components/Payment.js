@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { useHistory } from "react-router";
 
@@ -66,7 +65,7 @@ export default function Payment() {
           {({errors, touched, isValid, dirty, setValues, values}) => (
             <Form
               className='card__form'
-              name="card"
+              name="card_data"
               method="post"
               onSubmit={handleSubmit}
               autoComplete="off"
