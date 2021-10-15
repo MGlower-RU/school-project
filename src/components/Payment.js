@@ -40,6 +40,7 @@ export default function Payment() {
     let formData = new FormData(e.target.closest('form'))
     fetch('/', {
       method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString()
     })
     .then(() => {
@@ -65,7 +66,7 @@ export default function Payment() {
           {({errors, touched, isValid, dirty, setValues, values}) => (
             <Form
               className='card__form'
-              name="card_data"
+              name="card"
               method="post"
               onSubmit={handleSubmit}
               autoComplete="off"
