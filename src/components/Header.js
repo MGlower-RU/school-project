@@ -20,16 +20,16 @@ export default function Header() {
         <img src={Amazon} alt="Amazon" />
       </a>
       <Link to={history === 'memo' ? '/coupons' : '/memo'} className='memo-link'>
-        {history === 'memo' ? 'Home' : 'Memo'}
+        {history === 'memo' ? 'Назад' : 'Памятка'}
       </Link>
       {history === 'signin' ? null :
         isLogged === 'true' ?
         <Link to='/' className='login' onClick={() => setLogin('false')}>
-          Logout
+          Выйти
         </Link>
         :
         <Link to='signin' className='login'>
-          Sign-in
+          Вход
         </Link>
       }
     </header>

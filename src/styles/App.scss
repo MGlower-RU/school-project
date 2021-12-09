@@ -178,11 +178,11 @@ main {
 
   h1 {
     display: inline-flex;
-    font-size: 3rem;
-    line-height: 4.8rem;
-    padding: 2rem 4rem;
+    font-size: 2.6rem;
+    line-height: 1em;
+    padding: 2rem 3rem;
     color: rgb(35, 47, 62);
-    border: .5rem dashed rgb(255, 153, 0);
+    border: .4rem dashed rgb(255, 153, 0);
   }
 }
 
@@ -196,7 +196,7 @@ main {
 .coupon {
   display: flex;
   flex-direction: column;
-  max-width: 40rem;
+  max-width: 35rem;
   width: 100%;
   overflow: hidden;
   border-radius: 1rem;
@@ -364,8 +364,8 @@ main {
   margin: auto 0;
 
   h1 {
-    font-size: 3rem;
-    line-height: 4.8rem;
+    font-size: 2.4rem;
+    line-height: 1.5em;
     color: rgb(35, 47, 62);
   }
 }
@@ -640,15 +640,7 @@ main {
   .giveaway-info {  
     h1 {
       font-size: 2.4rem;
-      line-height: 3.2rem;
       padding: 1rem;
-    }
-  }
-
-  .payment {  
-    h1 {
-      font-size: 2.4rem;
-      line-height: 3.2rem;
     }
   }
 

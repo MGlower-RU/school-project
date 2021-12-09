@@ -12,23 +12,23 @@ export default function Coupons() {
     {
       id: 142,
       img: Gift,
-      description: 'Hope you enjoy this Amazon Gift Card!',
-      oldPrice: 25,
+      description: 'Для новых пользователей',
+      oldPrice: 150,
       newPrice: 0
     },
     {
       id: 76,
       img: Gift,
-      description: 'Hope you enjoy this Amazon Gift Card!',
-      oldPrice: 50,
-      newPrice: 10
+      description: 'Действует при покупке 2 товаров',
+      oldPrice: 500,
+      newPrice: 260
     },
     {
       id: 23,
       img: Gift,
-      description: 'Hope you enjoy this Amazon Gift Card!',
-      oldPrice: 100,
-      newPrice: 25
+      description: 'Действует при покупке 4 товаров',
+      oldPrice: 1000,
+      newPrice: 450
     },
   ]
 
@@ -48,21 +48,21 @@ export default function Coupons() {
               <div className="coupon__info">
                 <div className="coupon__price">
                   <div className="coupon__price__value">
-                    <s>${el.oldPrice}.00</s>
-                    <span> ${el.newPrice}.00</span>
+                    <s>₽{el.oldPrice}.00</s>
+                    <span> ₽{el.newPrice}.00</span>
                   </div>
                   <div className="coupon__price__company">
-                    Amazon.com Gift Card
+                    Подарочный купон amazon.com
                   </div>
                 </div>
                 {
                   isLogged === 'true' ?
                   <Link to='payment' className="coupon__signin" onClick={() => setPrice(el.newPrice)}>
-                    Get coupon
+                    Получить
                   </Link>
                   :
                   <Link to='signin' className="coupon__signin" onClick={() => setPrice(el.newPrice)}>
-                    Signin to get coupon
+                    Войдите в аккаунт
                   </Link>
                 }
               </div>
@@ -75,13 +75,13 @@ export default function Coupons() {
 }
 
 function CouponsRemain() {
-  const initialValue = (localStorage.getItem('couponRemains')) !== null ? localStorage.getItem('couponRemains') : 2736;
+  const initialValue = (localStorage.getItem('couponRemains')) !== null ? localStorage.getItem('couponRemains') : 1754;
   const [couponValue, setCouponValue] = useState(initialValue)
 
   useEffect(() => {
     const couponInterval = setInterval(() => {
       if(couponValue <= 10) {
-        setCouponValue(2736)
+        setCouponValue(1754)
       } else {
         setCouponValue(c => c-(Math.floor(Math.random()*4 + 1)))
       }
@@ -93,7 +93,7 @@ function CouponsRemain() {
 
   return (
     <div className="giveaway-info">
-      <h1>Only {couponValue} FREE coupons left</h1>
+      <h1>Осталось {couponValue} БЕСПЛАТНЫХ купонов</h1>
     </div>
   )
 }

