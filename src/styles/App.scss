@@ -524,6 +524,10 @@ main {
         &:first-of-type {
           text-indent: 1.5rem;
         }
+
+        &:not(:first-of-type) {
+          margin-top: 1rem;
+        }
       }
       
       a {

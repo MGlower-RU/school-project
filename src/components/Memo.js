@@ -4,31 +4,36 @@ import Http from '../images/http.png'
 export default function Memo() {
   return (
     <div className='memo__wrapper'>
-      <h1>Be safe in the net</h1>
+      <h1>Безопасность в интернете</h1>
       <ul>
         <li>
-          <p>Make your password unique and strong:</p>
-          <p className='red'>Don't use: your bio data(for example: your name, birthday date), passwords like "12345", "pass" or "qwerty"</p>
-          <p className='green'>Use: letters with lower and upper cases, numbers, symbols e.g. "!, ?, (, ), etc."</p>
-          <p>Example of password: Zs:kg4"*MJy&#125;PbE/</p>
-          <p>Advice: to make your password safe use <a href='https://passwordsgenerator.net/' target='_blank' rel='noreferrer'>password generator site</a>.</p>
+          <p>Создавайте уникальный и сложный пароль:</p>
+          <p className='red'>Не используйте: ваши личные данные (ваше имя, дата рождения), пароли типа "12345", "pass", "alesha2003"</p>
+          <p className='green'>Включайте в пароль: буквы в нижнем и верхнем регистрах, цифры, символы типа "!, ?, (, ^"</p>
+          <p>Пример пароля: Zs:kg4"*MJy&#125;PbE/</p>
+          <p>Совет: чтобы задать безопасный пароль используйте <a href='https://passwordsgenerator.net/' target='_blank' rel='noreferrer'>генератор паролей</a>.</p>
         </li>
         <li>
-          <p>Don't give data to site without https(i.e. have no SSL certificate), the hackers can intercept your data:</p>
+          <p>Не вносите данные на сайт, у которого нет SSL протокола(без https в начале адреса), хакеры могут перехватить информацию:</p>
           <img src={Https} alt="" />
           <img src={Http} alt="" />
         </li>
         <li>
-          <p>Don't give data to site you don't trust.</p>
+          <p>
+            Перед тем как внести данные на популярном сайте - удостоверьтесь в правильности URL-адреса(проверьте все символы), чтобы убедиться наверняка - найдите страницу сайта в википедии и перейдите на сайт по указанной ссылке.
+          </p>
         </li>
         <li>
-          <p>Before you will surf the net on FREE Wi-Fi in the cafe be sure to turn on VPN.</p>
+          <p>Не давайте информацию сайтам, которым вы не доверяете(cookie-разрешения, ввод данных, геолокация).</p>
         </li>
         <li>
-          <p>Use antivirus to check harmful files.</p>
+          <p>Используйте VPN в общедоступных сетях WiFi.</p>
         </li>
         <li>
-          <p>If you found scam site - report it: <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en">click here</a></p>
+          <p>Используйте антивирус для проверки скачиваемых файлов.</p>
+        </li>
+        <li>
+          <p>Если вы наткнулись на мошеннический сайт - подайте жалобу по ссылке: <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en">click here</a></p>
         </li>
       </ul>
     </div>
