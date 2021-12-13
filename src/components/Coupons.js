@@ -12,22 +12,22 @@ export default function Coupons() {
     {
       id: 142,
       img: Gift,
-      description: 'Для новых пользователей',
+      description: 'Для новых пользователей\n 1 товар до 150₽ - бесплатно',
       oldPrice: 150,
       newPrice: 0
     },
     {
       id: 76,
       img: Gift,
-      description: 'Действует при покупке 2 товаров',
+      description: 'Скидка 48% на товар до 500₽',
       oldPrice: 500,
       newPrice: 260
     },
     {
       id: 23,
       img: Gift,
-      description: 'Действует при покупке 4 товаров',
-      oldPrice: 1000,
+      description: 'Скидка 55% на 2 товара до 2000₽',
+      oldPrice: 2000,
       newPrice: 450
     },
   ]
