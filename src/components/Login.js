@@ -65,28 +65,29 @@ export default function Login() {
               method="post"
               onSubmit={handleSubmit}
             >
-              <h2>Sign-In</h2>
+              <h2>Вход</h2>
 
               <Field type="hidden" name="form-name" value="login" />
 
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Электронный адрес</label>
               <Field id='email' name="email" type="email" autoComplete="off" validate={validateEmail} />
               {errors.email && touched.email && <div>{errors.email}</div>}
 
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Пароль</label>
               <Field id='password' name="password" type="password" validate={validatePassword} />
               {errors.password && touched.password && <div>{errors.password}</div>}
 
-              <button className='coupon__signin' type="submit" disabled={!(isValid && dirty)}>Continue</button>
+              <button className='coupon__signin' type="submit" disabled={!(isValid && dirty)}>Продолжить</button>
 
               <div className="policy">
-                By continuing, you agree to Amazon's&nbsp;
+                Продолжая, вы соглашаетесь с<br/>
                 <a href='https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=508088'>
-                  Conditions of Use
-                </a> and&nbsp;
+                  правилами пользования
+                </a> и&nbsp;
                 <a href='https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=468496'>
-                  Privacy Notice.
+                  политикой конфиденциальности
                 </a>
+                &nbsp;amazon.com
               </div>
             </Form>
           )}
