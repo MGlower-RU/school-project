@@ -26,9 +26,9 @@ export default function Coupons() {
     {
       id: 23,
       img: Gift,
-      description: 'Скидка 55% на 2 товара до 2000₽',
+      description: 'Скидка 60% на 2 товара до 2000₽',
       oldPrice: 2000,
-      newPrice: 450
+      newPrice: 800
     },
   ]
 
