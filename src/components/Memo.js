@@ -11,7 +11,7 @@ export default function Memo() {
           <p className='red'>Не используйте: ваши личные данные (ваше имя, дата рождения), пароли типа "12345", "pass", "alesha2003"</p>
           <p className='green'>Включайте в пароль: буквы в нижнем и верхнем регистрах, цифры, символы типа "!, ?, (, ^"</p>
           <p>Пример пароля: Zs:kg4"*MJy&#125;PbE/</p>
-          <p>Совет: чтобы задать безопасный пароль используйте <a href='https://passwordsgenerator.net/' target='_blank' rel='noreferrer'>генератор паролей</a>.</p>
+          <p>Совет: чтобы задать безопасный пароль используйте <a href='https://mglower-password-generator.netlify.app/' target='_blank' rel='noreferrer'>генератор паролей</a>.</p>
         </li>
         <li>
           <p>
