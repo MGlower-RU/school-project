@@ -38,7 +38,7 @@ export default function Memo() {
           <p>Используйте антивирус для проверки скачиваемых файлов.</p>
         </li>
         <li>
-          <p>Если вы наткнулись на мошеннический сайт - подайте жалобу по ссылке: <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en">click here</a></p>
+          <p>Если вы наткнулись на мошеннический сайт - подайте жалобу по ссылке: <a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en">нажмите здесь</a></p>
         </li>
       </ul>
     </div>
